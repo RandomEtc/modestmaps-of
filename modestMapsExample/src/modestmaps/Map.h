@@ -14,7 +14,7 @@
 #define TILE_SIZE 256.0
 
 // limit simultaneous calls to loadImage
-#define MAX_PENDING  4
+#define MAX_PENDING  1
 
 // limit tiles in memory
 // 256 would be 64 MB, you may want to lower this quite a bit for your app
@@ -45,13 +45,17 @@ public:
 	vector<Coordinate> queue;
 	// a list of the most recent MAX_IMAGES_TO_KEEP ofImages we've seen
 	vector<ofImage*> recentImages;
+	// keep track of what we can see already:
+	set<Coordinate> visibleKeys;
 	
 	// for sorting coordinates by zoom
 	//ZoomComparator zoomComparator;
 	
 	// for loading tiles from the inside first
 	//QueueSorter queueSorter;
-	
+
+	double px;
+	double py;
 	
 	/////////////////////////// methods	
 	
@@ -100,7 +104,7 @@ public:
 		queue.clear();
 		pending.clear();
 	}*/
-
+	
 	Point2d coordinatePoint(Coordinate coord);
     
 	Coordinate pointCoordinate(Point2d point);

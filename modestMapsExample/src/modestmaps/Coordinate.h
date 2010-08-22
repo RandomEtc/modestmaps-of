@@ -30,6 +30,7 @@ public:
 
 	bool operator < (const Coordinate &c) const
     {
+		//cout << *this << " compared to " << c << endl;
         return zoom < c.zoom || (zoom == c.zoom && row < c.row) || (zoom == c.zoom && row == c.row && column < c.column);
     }
 	

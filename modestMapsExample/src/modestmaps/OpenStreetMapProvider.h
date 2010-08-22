@@ -27,7 +27,8 @@ public:
 	vector<string> getTileUrls(Coordinate coordinate) {
 		stringstream url;
 		// TODO: Use a random subdomain
-		url << "http://tile.openstreetmap.org/" << (int)coordinate.zoom << "/" << (int)coordinate.column << "/" << (int)coordinate.row << ".png";
+		//url << "http://tile.openstreetmap.org/" << (int)coordinate.zoom << "/" << (int)coordinate.column << "/" << (int)coordinate.row << ".png";
+		url << "/Users/tom/Documents/Stamen/SFMOMA/sfmoma/trunk/processing/world_borders_render/gray-world/" << (int)coordinate.zoom << "/" << (int)coordinate.column << "/" << (int)coordinate.row << ".png";
 		vector<string> urls;
 		urls.push_back(url.str());
 		return urls;

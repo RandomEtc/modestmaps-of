@@ -1,5 +1,14 @@
 #include "Map.h"
 
+template <class T> class ItemNotInSet {
+public:
+	set<T> *theSet;
+	ItemNotInSet(set<T> *_set): theSet(_set) {}
+    bool operator () ( const T &c ) {
+		return theSet->count(c) == 0;;
+	}
+};
+
 void Map::setup(AbstractMapProvider* _provider, double _width, double _height) {
 	provider = _provider;
 	width = _width;
@@ -40,13 +49,12 @@ void Map::draw() {
 	int cols = pow(2, baseZoom);
 	
 	// we don't wrap around the world yet, so:
-	minCol = max(min(minCol, 0), cols);
-	maxCol = max(min(maxCol, 0), cols);
-	minRow = max(min(minRow, 0), rows);
-	maxRow = max(min(maxRow, 0), rows);
+	minCol = min(max(minCol, 0), cols);
+	maxCol = min(max(maxCol, 0), cols);
+	minRow = min(max(minRow, 0), rows);
+	maxRow = min(max(maxRow, 0), rows);
 	
-	// keep track of what we can see already:
-	set<Coordinate> visibleKeys;
+	visibleKeys.clear();
 	
 	// grab coords for visible tiles
 	for (int col = minCol; col <= maxCol; col++) {
@@ -112,7 +120,6 @@ void Map::draw() {
 		set<Coordinate>::iterator iter;
 		for (iter = visibleKeys.begin(); iter != visibleKeys.end(); iter++) {
 			Coordinate coord = *iter;
-			
 			if (coord.zoom != baseZoom) {
 				ofPopMatrix();
 				ofPushMatrix();
@@ -120,17 +127,22 @@ void Map::draw() {
 				correction = 1.0/pow(2.0,coord.zoom);
 				ofScale(correction, correction, correction);
 			}
+
+			ofEnableAlphaBlending();
+			ofSetColor(0,0,0,50);
+			ofRect(coord.column*TILE_SIZE,coord.row*TILE_SIZE,TILE_SIZE,TILE_SIZE);
 			
 			if (images.count(coord) > 0) {
-				ofImage *tile = images[coord];
-				tile->draw(coord.column*TILE_SIZE,coord.row*TILE_SIZE,TILE_SIZE,TILE_SIZE);
+				//cout << "rendering: " << coord;				
+				//ofImage *tile = images[coord];
+				//tile->draw(coord.column*TILE_SIZE,coord.row*TILE_SIZE,TILE_SIZE,TILE_SIZE);
 				// TODO: must be a cleaner C++ way to do this?
 				// we want this image to be at the end of recentImages, if it's already there we'll remove it and then add it again
-				vector<ofImage*>::iterator result = find(recentImages.begin(), recentImages.end(), tile);
-				if (result != recentImages.end()) {
-					recentImages.erase(result);
-				}
-				recentImages.push_back(tile);
+				//vector<ofImage*>::iterator result = find(recentImages.begin(), recentImages.end(), tile);
+				//if (result != recentImages.end()) {
+				//	recentImages.erase(result);
+				//}
+				//recentImages.push_back(tile);
 			}
 		}
 		ofPopMatrix();
@@ -143,7 +155,7 @@ void Map::draw() {
 	// stop fetching things we can't see:
 	// (visibleKeys also has the parents and children, if needed, but that shouldn't matter)
 	//queue.retainAll(visibleKeys);
-	queue.assign(visibleKeys.begin(), visibleKeys.end());
+	queue.erase(remove_if(queue.begin(), queue.end(), ItemNotInSet<Coordinate>(&visibleKeys)), queue.end());
 	
 	// TODO sort what's left by distance from center:
 	//queueSorter.setCenter(new Coordinate( (minRow + maxRow) / 2.0f, (minCol + maxCol) / 2.0f, zoom));
@@ -174,30 +186,39 @@ void Map::draw() {
 }
 
 void Map::keyPressed(int key) {
+	if (key == '+' || key == '=') {
+		if (getZoom() < 10) {
+			zoomIn();
+		}
+	}
+	else if (key == '-' || key == '_') {
+		if (getZoom() > 0) {
+			zoomOut();
+		}
+	}
 	// TODO: keyboard movement
 }
 void Map::keyReleased(int key) {
 	// TODO: keyboard movement
 }
 void Map::mouseDragged(int x, int y, int button) {
-	static double px = -1;
-	static double py = -1;
-	if (px > 0 && py > 0) {
-		double dx = (double)(x - px) / sc;
-		double dy = (double)(x - py) / sc;
-		//    float angle = radians(-a);
-		//    float rx = cos(angle)*dx - sin(angle)*dy;
-		//    float ry = sin(angle)*dx + cos(angle)*dy;
-		//    tx += rx;
-		//    ty += ry;
-		tx += dx;
-		ty += dy;
-	}		
+	double dx = ((double)x - px) / sc;
+	double dy = ((double)y - py) / sc;
+	//cout << dx << "," << dy;
+	//    float angle = radians(-a);
+	//    float rx = cos(angle)*dx - sin(angle)*dy;
+	//    float ry = sin(angle)*dx + cos(angle)*dy;
+	//    tx += rx;
+	//    ty += ry;
+	tx += dx;
+	ty += dy;
 	px = x;
 	py = y;
 }
 void Map::mousePressed(int x, int y, int button) {
 	// TODO: doubleclick?
+	px = x;
+	py = y;
 }
 void Map::mouseReleased(int x, int y, int button) {
 	// TODO: doubleclick?
@@ -353,8 +374,8 @@ void Map::grabTile(Coordinate coord) {
 	bool isQueued = find(queue.begin(), queue.end(), coord) != queue.end();
 	bool isAlreadyLoaded = images.count(coord) > 0;
 	if (!isPending && !isQueued && !isAlreadyLoaded) {
-		//    println("adding " + coord.toString() + " to queue");
-		queue.push_back(coord);
+		cout << coord << " queued" << endl;
+		queue.push_back(Coordinate(coord));
 	}
 }
 
@@ -362,11 +383,13 @@ void Map::grabTile(Coordinate coord) {
 // TODO: there could be issues when this is called from within a thread
 // probably needs synchronizing on images / pending / queue
 void Map::tileDone(Coordinate coord, ofImage *img) {
+	cout << coord << " loaded" << endl;
 	// check if we're still waiting for this (new provider clears pending)
 	// also check if we got something
 	if (pending.count(coord) > 0) { // TODO: check the C++ equivalent of img != NULL) {
-		//      p.println("got " + coord + " image");
-		images[coord] = img;
+		cout << "caching " << coord << endl;
+		images[Coordinate(coord)] = img;
+		cout << "cache size: " << images.size() << endl;
 		pending.erase(coord);  
 	}
 	else {
@@ -377,9 +400,12 @@ void Map::tileDone(Coordinate coord, ofImage *img) {
 
 void Map::processQueue() {
 	while (pending.size() < MAX_PENDING && queue.size() > 0) {
-		Coordinate coord = *queue.begin();
+		cout << "queue size: " << queue.size() << endl;		
+		Coordinate coord = *(queue.begin());
+		Coordinate key = Coordinate(coord);
+		pending[key] = TileLoader();
+		cout << "starting load for " << key << endl;
+		pending[key].start(key, provider, this);
 		queue.erase(queue.begin());
-		pending[coord] = TileLoader();
-		pending[coord].start(coord, provider, this);
 	}  
 }
