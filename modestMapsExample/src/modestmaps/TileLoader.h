@@ -4,11 +4,12 @@
 #include "ofMain.h"
 #include "ofxThread.h"
 #include "Coordinate.h"
+#include "SimpleWebScraper.h"
 
 class AbstractMapProvider;
 class Map;
 
-class TileLoader : public ofxThread {
+class TileLoader {
 	
 public:
 	
@@ -16,15 +17,15 @@ public:
 	AbstractMapProvider *provider;
 	Map *theMap;
 	
-	void start(Coordinate _coord, AbstractMapProvider *_provider, Map *_map) {
-		coord = _coord;
-		provider = _provider;
-		theMap = _map;
-		startThread(true,false);
-	}
-	
-    void threadedFunction();
-	
+	void start(Coordinate _coord, AbstractMapProvider *_provider, Map *_map);
+
+	SimpleWebScraper sws;	
+		
+	// callback events ----------------------------------------------------------
+	void onTextReceived(const void* pSender, string& response);
+	void onUnthreadedStreamReceived(const void* pSender, StreamEventArgs & args_);	
+	void onThreadedStreamReceived(const void* pSender, StreamEventArgs & args_);
+		
 };
 
 	

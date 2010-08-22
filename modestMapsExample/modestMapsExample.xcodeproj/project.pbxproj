@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E20FF8051220E17000F42001 /* ofxThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E20FF8031220E17000F42001 /* ofxThread.cpp */; };
 		E20FF8AB1220EBC500F42001 /* Transformation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E20FF8AA1220EBC500F42001 /* Transformation.cpp */; };
 		E20FF8AF1220EC2C00F42001 /* MercatorProjection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E20FF8AE1220EC2C00F42001 /* MercatorProjection.cpp */; };
 		E20FF8C81220ECB300F42001 /* LinearProjection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E20FF8C71220ECB300F42001 /* LinearProjection.cpp */; };
 		E20FF8FB1220F0D100F42001 /* TileLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E20FF8FA1220F0D100F42001 /* TileLoader.cpp */; };
 		E20FF96A1220F45600F42001 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E20FF9691220F45600F42001 /* Map.cpp */; };
+		E273D2B412212447006C8EC6 /* ofMemoryImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E273D2AD12212447006C8EC6 /* ofMemoryImage.cpp */; };
+		E273D2B512212447006C8EC6 /* SimpleWebScraper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E273D2AF12212447006C8EC6 /* SimpleWebScraper.cpp */; };
+		E273D2CF122129FF006C8EC6 /* ofxThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E273D2CD122129FF006C8EC6 /* ofxThread.cpp */; };
 		E45BE0AA0E8CC67C009D7055 /* GLee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE0A90E8CC67C009D7055 /* GLee.a */; };
 		E45BE2E40E8CC69C009D7055 /* rtAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE2E30E8CC69C009D7055 /* rtAudio.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -97,13 +99,20 @@
 		E20FF76B122062F300F42001 /* TileLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileLoader.h; sourceTree = "<group>"; };
 		E20FF76C1220636E00F42001 /* ZoomComparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomComparator.h; sourceTree = "<group>"; };
 		E20FF76D1220637500F42001 /* QueueSorter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueSorter.h; sourceTree = "<group>"; };
-		E20FF8031220E17000F42001 /* ofxThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxThread.cpp; sourceTree = "<group>"; };
-		E20FF8041220E17000F42001 /* ofxThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxThread.h; sourceTree = "<group>"; };
 		E20FF8AA1220EBC500F42001 /* Transformation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Transformation.cpp; sourceTree = "<group>"; };
 		E20FF8AE1220EC2C00F42001 /* MercatorProjection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MercatorProjection.cpp; sourceTree = "<group>"; };
 		E20FF8C71220ECB300F42001 /* LinearProjection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinearProjection.cpp; sourceTree = "<group>"; };
 		E20FF8FA1220F0D100F42001 /* TileLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileLoader.cpp; sourceTree = "<group>"; };
 		E20FF9691220F45600F42001 /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
+		E273D2AD12212447006C8EC6 /* ofMemoryImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofMemoryImage.cpp; sourceTree = "<group>"; };
+		E273D2AE12212447006C8EC6 /* ofMemoryImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofMemoryImage.h; sourceTree = "<group>"; };
+		E273D2AF12212447006C8EC6 /* SimpleWebScraper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleWebScraper.cpp; sourceTree = "<group>"; };
+		E273D2B012212447006C8EC6 /* SimpleWebScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleWebScraper.h; sourceTree = "<group>"; };
+		E273D2CA122129FF006C8EC6 /* Instructions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Instructions.txt; sourceTree = "<group>"; };
+		E273D2CB122129FF006C8EC6 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
+		E273D2CD122129FF006C8EC6 /* ofxThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxThread.cpp; sourceTree = "<group>"; };
+		E273D2CE122129FF006C8EC6 /* ofxThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxThread.h; sourceTree = "<group>"; };
+		E273D2D012212A1D006C8EC6 /* ofAddons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofAddons.h; path = ../../../addons/ofAddons.h; sourceTree = SOURCE_ROOT; };
 		E45BE0390E8CC647009D7055 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = ../../../libs/freeimage/include/FreeImage.h; sourceTree = SOURCE_ROOT; };
 		E45BE03F0E8CC650009D7055 /* fmod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fmod.h; path = ../../../libs/fmodex/include/fmod.h; sourceTree = SOURCE_ROOT; };
 		E45BE0400E8CC650009D7055 /* fmod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fmod.hpp; path = ../../../libs/fmodex/include/fmod.hpp; sourceTree = SOURCE_ROOT; };
@@ -183,7 +192,8 @@
 		BB4B018C10F6955C006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				E20FF8021220E17000F42001 /* src */,
+				E273D2D012212A1D006C8EC6 /* ofAddons.h */,
+				E273D2C8122129FF006C8EC6 /* ofxThread */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -245,15 +255,44 @@
 			name = util;
 			sourceTree = "<group>";
 		};
-		E20FF8021220E17000F42001 /* src */ = {
+		E273D2AB12212447006C8EC6 /* httpImage */ = {
 			isa = PBXGroup;
 			children = (
-				E20FF8031220E17000F42001 /* ofxThread.cpp */,
-				E20FF8041220E17000F42001 /* ofxThread.h */,
+				E273D2AD12212447006C8EC6 /* ofMemoryImage.cpp */,
+				E273D2AE12212447006C8EC6 /* ofMemoryImage.h */,
+				E273D2AF12212447006C8EC6 /* SimpleWebScraper.cpp */,
+				E273D2B012212447006C8EC6 /* SimpleWebScraper.h */,
 			);
-			name = src;
-			path = ../../../addons/ofxThread/src;
+			path = httpImage;
+			sourceTree = "<group>";
+		};
+		E273D2C8122129FF006C8EC6 /* ofxThread */ = {
+			isa = PBXGroup;
+			children = (
+				E273D2C9122129FF006C8EC6 /* docs */,
+				E273D2CB122129FF006C8EC6 /* install.xml */,
+				E273D2CC122129FF006C8EC6 /* src */,
+			);
+			name = ofxThread;
+			path = ../../../addons/ofxThread;
 			sourceTree = SOURCE_ROOT;
+		};
+		E273D2C9122129FF006C8EC6 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				E273D2CA122129FF006C8EC6 /* Instructions.txt */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
+		E273D2CC122129FF006C8EC6 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E273D2CD122129FF006C8EC6 /* ofxThread.cpp */,
+				E273D2CE122129FF006C8EC6 /* ofxThread.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
 		};
 		E45BE0360E8CC5DE009D7055 /* libs */ = {
 			isa = PBXGroup;
@@ -447,6 +486,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E273D2AB12212447006C8EC6 /* httpImage */,
 				E20FF694121F4F0D00F42001 /* modestmaps */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
@@ -618,12 +658,14 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
-				E20FF8051220E17000F42001 /* ofxThread.cpp in Sources */,
 				E20FF8AB1220EBC500F42001 /* Transformation.cpp in Sources */,
 				E20FF8AF1220EC2C00F42001 /* MercatorProjection.cpp in Sources */,
 				E20FF8C81220ECB300F42001 /* LinearProjection.cpp in Sources */,
 				E20FF8FB1220F0D100F42001 /* TileLoader.cpp in Sources */,
 				E20FF96A1220F45600F42001 /* Map.cpp in Sources */,
+				E273D2B412212447006C8EC6 /* ofMemoryImage.cpp in Sources */,
+				E273D2B512212447006C8EC6 /* SimpleWebScraper.cpp in Sources */,
+				E273D2CF122129FF006C8EC6 /* ofxThread.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

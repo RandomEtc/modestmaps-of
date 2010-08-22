@@ -128,21 +128,25 @@ void Map::draw() {
 				ofScale(correction, correction, correction);
 			}
 
-			ofEnableAlphaBlending();
-			ofSetColor(0,0,0,50);
-			ofRect(coord.column*TILE_SIZE,coord.row*TILE_SIZE,TILE_SIZE,TILE_SIZE);
+			//ofEnableAlphaBlending();
+			//ofSetColor(0,0,0,50);
+			//ofRect(coord.column*TILE_SIZE,coord.row*TILE_SIZE,TILE_SIZE,TILE_SIZE);
 			
 			if (images.count(coord) > 0) {
 				//cout << "rendering: " << coord;				
-				//ofImage *tile = images[coord];
-				//tile->draw(coord.column*TILE_SIZE,coord.row*TILE_SIZE,TILE_SIZE,TILE_SIZE);
+				ofMemoryImage *tile = images[coord];
 				// TODO: must be a cleaner C++ way to do this?
 				// we want this image to be at the end of recentImages, if it's already there we'll remove it and then add it again
-				//vector<ofImage*>::iterator result = find(recentImages.begin(), recentImages.end(), tile);
-				//if (result != recentImages.end()) {
-				//	recentImages.erase(result);
-				//}
-				//recentImages.push_back(tile);
+				vector<ofMemoryImage*>::iterator result = find(recentImages.begin(), recentImages.end(), tile);
+				if (result != recentImages.end()) {
+					recentImages.erase(result);
+				}
+				else {
+					tile->setUseTexture(true);
+					tile->initTex();
+				}
+				tile->draw(coord.column*TILE_SIZE,coord.row*TILE_SIZE,TILE_SIZE,TILE_SIZE);
+				recentImages.push_back(tile);
 			}
 		}
 		ofPopMatrix();
@@ -169,11 +173,11 @@ void Map::draw() {
 		recentImages.erase(recentImages.begin(), recentImages.end()-MAX_IMAGES_TO_KEEP);
 		//images.values().retainAll(recentImages);
 		// TODO: re-think the stl collections used so that a simpler retainAll equivalent is available
-		map<Coordinate,ofImage*>::iterator iter = images.begin();
-		map<Coordinate,ofImage*>::iterator endIter = images.end();
+		map<Coordinate,ofMemoryImage*>::iterator iter = images.begin();
+		map<Coordinate,ofMemoryImage*>::iterator endIter = images.end();
 		for (; iter != endIter;) {
-			ofImage* tile = iter->second;
-			vector<ofImage*>::iterator result = find(recentImages.begin(), recentImages.end(), tile);
+			ofMemoryImage* tile = iter->second;
+			vector<ofMemoryImage*>::iterator result = find(recentImages.begin(), recentImages.end(), tile);
 			if (result != recentImages.end()) {
 				images.erase(iter++);
 			}
@@ -382,7 +386,7 @@ void Map::grabTile(Coordinate coord) {
 
 // TODO: there could be issues when this is called from within a thread
 // probably needs synchronizing on images / pending / queue
-void Map::tileDone(Coordinate coord, ofImage *img) {
+void Map::tileDone(Coordinate coord, ofMemoryImage *img) {
 	cout << coord << " loaded" << endl;
 	// check if we're still waiting for this (new provider clears pending)
 	// also check if we got something

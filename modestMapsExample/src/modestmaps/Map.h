@@ -10,6 +10,7 @@
 #include "Coordinate.h"
 #include "Point2d.h"
 #include "TileLoader.h"
+#include "ofMemoryImage.h"
 
 #define TILE_SIZE 256.0
 
@@ -40,11 +41,11 @@ public:
 	// loading tiles
 	map<Coordinate, TileLoader> pending;
 	// loaded tiles
-	map<Coordinate, ofImage*> images;
+	map<Coordinate, ofMemoryImage*> images;
 	// coords waiting to load
 	vector<Coordinate> queue;
 	// a list of the most recent MAX_IMAGES_TO_KEEP ofImages we've seen
-	vector<ofImage*> recentImages;
+	vector<ofMemoryImage*> recentImages;
 	// keep track of what we can see already:
 	set<Coordinate> visibleKeys;
 	
@@ -136,7 +137,7 @@ public:
 	
 	void grabTile(Coordinate coord);
 	
-	void tileDone(Coordinate coord, ofImage *img);
+	void tileDone(Coordinate coord, ofMemoryImage *img);
 	
 	void processQueue();
 	
