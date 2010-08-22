@@ -4,8 +4,8 @@
 
 void TileLoader::threadedFunction() {
 	vector<string> urls = provider->getTileUrls(coord);
-	ofImage img;
-	img.loadImage(urls[0]);
+	ofImage* img = new ofImage();
+	img->loadImage(urls[0]);
 	/*if (img != null) {
 	 for (int i = 1; i < urls.length; i++) {
 	 PImage img2 = p.loadImage(urls[i], "unknown");

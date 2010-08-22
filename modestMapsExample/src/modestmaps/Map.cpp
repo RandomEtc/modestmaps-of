@@ -122,11 +122,11 @@ void Map::draw() {
 			}
 			
 			if (images.count(coord) > 0) {
-				ofImage tile = images[coord];
-				tile.draw(coord.column*TILE_SIZE,coord.row*TILE_SIZE,TILE_SIZE,TILE_SIZE);
+				ofImage *tile = images[coord];
+				tile->draw(coord.column*TILE_SIZE,coord.row*TILE_SIZE,TILE_SIZE,TILE_SIZE);
 				// TODO: must be a cleaner C++ way to do this?
 				// we want this image to be at the end of recentImages, if it's already there we'll remove it and then add it again
-				vector<ofImage>::iterator result = find(recentImages.begin(), recentImages.end(), tile);
+				vector<ofImage*>::iterator result = find(recentImages.begin(), recentImages.end(), tile);
 				if (result != recentImages.end()) {
 					recentImages.erase(result);
 				}
@@ -157,11 +157,11 @@ void Map::draw() {
 		recentImages.erase(recentImages.begin(), recentImages.end()-MAX_IMAGES_TO_KEEP);
 		//images.values().retainAll(recentImages);
 		// TODO: re-think the stl collections used so that a simpler retainAll equivalent is available
-		map<Coordinate,ofImage>::iterator iter = images.begin();
-		map<Coordinate,ofImage>::iterator endIter = images.end();
+		map<Coordinate,ofImage*>::iterator iter = images.begin();
+		map<Coordinate,ofImage*>::iterator endIter = images.end();
 		for (; iter != endIter;) {
-			ofImage tile = iter->second;
-			vector<ofImage>::iterator result = find(recentImages.begin(), recentImages.end(), tile);
+			ofImage* tile = iter->second;
+			vector<ofImage*>::iterator result = find(recentImages.begin(), recentImages.end(), tile);
 			if (result != recentImages.end()) {
 				images.erase(iter++);
 			}
@@ -361,7 +361,7 @@ void Map::grabTile(Coordinate coord) {
 
 // TODO: there could be issues when this is called from within a thread
 // probably needs synchronizing on images / pending / queue
-void Map::tileDone(Coordinate coord, ofImage img) {
+void Map::tileDone(Coordinate coord, ofImage *img) {
 	// check if we're still waiting for this (new provider clears pending)
 	// also check if we got something
 	if (pending.count(coord) > 0) { // TODO: check the C++ equivalent of img != NULL) {

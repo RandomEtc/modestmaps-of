@@ -27,6 +27,11 @@ public:
     {
         return c.row == row && c.column == column && c.zoom == zoom;
     }
+
+	bool operator < (const Coordinate &c) const
+    {
+        return zoom < c.zoom || (zoom == c.zoom && row < c.row) || (zoom == c.zoom && row == c.row && column < c.column);
+    }
 	
 	Coordinate container() {
 		return Coordinate(floor(row), floor(column), zoom);

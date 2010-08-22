@@ -40,11 +40,11 @@ public:
 	// loading tiles
 	map<Coordinate, TileLoader> pending;
 	// loaded tiles
-	map<Coordinate, ofImage> images;
+	map<Coordinate, ofImage*> images;
 	// coords waiting to load
 	vector<Coordinate> queue;
-	// a list of the most recent MAX_IMAGES_TO_KEEP PImages we've seen
-	vector<ofImage> recentImages;
+	// a list of the most recent MAX_IMAGES_TO_KEEP ofImages we've seen
+	vector<ofImage*> recentImages;
 	
 	// for sorting coordinates by zoom
 	//ZoomComparator zoomComparator;
@@ -132,7 +132,7 @@ public:
 	
 	void grabTile(Coordinate coord);
 	
-	void tileDone(Coordinate coord, ofImage img);
+	void tileDone(Coordinate coord, ofImage *img);
 	
 	void processQueue();
 	
