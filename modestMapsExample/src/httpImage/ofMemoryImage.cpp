@@ -15,13 +15,21 @@ void ofMemoryImage::loadFromData(const unsigned char * datasource, int len) {
 	
 	if (bLoadedOk == true){
 			cout << "it's been loaded " << endl;
-	
+		
 			if (myPixels.bAllocated == true && bUseTexture == true){
 			tex.allocate(myPixels.width, myPixels.height, myPixels.glDataType);
 		}
 	}		
+	
+	FIBITMAP * bmp               = getBmpFromPixels(myPixels);
+	bool horSuccess = false;// FreeImage_FlipHorizontal(bmp);
+	bool vertSuccess = FreeImage_FlipVertical(bmp);
+	if(horSuccess || vertSuccess) {
+		putBmpIntoPixels(bmp, myPixels);
+	}
+	if (bmp != NULL)            FreeImage_Unload(bmp);		
+	
 	update();
-
 
 }
 
