@@ -313,8 +313,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -332,11 +330,10 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E273D60F122234C3006C8EC6</string>
+										<string>E2C8B52B1222DFA900C23B17</string>
 										<key>history</key>
 										<array>
 											<string>E20FF6FF121F5C4300F42001</string>
-											<string>E20FF7441220542A00F42001</string>
 											<string>E20FF7B61220DA3A00F42001</string>
 											<string>E20FF7B71220DA3A00F42001</string>
 											<string>E20FF8B41220EC6F00F42001</string>
@@ -373,7 +370,7 @@
 											<string>E273D5E7122232EF006C8EC6</string>
 											<string>E273D5FB122233AF006C8EC6</string>
 											<string>E273D60D122234C3006C8EC6</string>
-											<string>E273D60E122234C3006C8EC6</string>
+											<string>E273D60F122234C3006C8EC6</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -385,16 +382,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {731, 424}}</string>
+								<string>{{0, 0}, {731, 415}}</string>
 								<key>RubberWindowFrame</key>
 								<string>240 115 1024 763 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>424pt</string>
+							<string>415pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -405,14 +404,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 429}, {731, 293}}</string>
+								<string>{{0, 420}, {731, 302}}</string>
 								<key>RubberWindowFrame</key>
 								<string>240 115 1024 763 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>293pt</string>
+							<string>302pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -431,9 +430,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>E273D5FE122233AF006C8EC6</string>
+				<string>E2C8B52C1222DFA900C23B17</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>E273D5FF122233AF006C8EC6</string>
+				<string>E2C8B52D1222DFA900C23B17</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -571,10 +570,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E273D617122234C3006C8EC6</string>
-		<string>E273D618122234C3006C8EC6</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>E212B288121E53AE0097DE49</string>
 		<string>/Users/tom/Documents/Code/OpenFrameworks/openFrameworks/apps/modestMaps/modestMapsExample/modestMapsExample.xcodeproj</string>
 	</array>
@@ -656,7 +651,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>E212B288121E53AE0097DE49</string>
-				<string>E273D600122233AF006C8EC6</string>
+				<string>E2C8B52E1222DFA900C23B17</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

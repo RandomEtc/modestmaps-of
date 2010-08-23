@@ -1,7 +1,6 @@
 #ifndef ABSTRACT_PROJECTION
 #define ABSTRACT_PROJECTION
 
-#include "ofMain.h"
 #include "Transformation.h"
 #include "Point2d.h"
 #include "Coordinate.h"

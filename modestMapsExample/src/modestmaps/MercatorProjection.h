@@ -2,7 +2,6 @@
 #ifndef MERCATOR_PROJECTION
 #define MERCATOR_PROJECTION
 
-#include "ofMain.h"
 #include "AbstractProjection.h"
 #include "Transformation.h"
 

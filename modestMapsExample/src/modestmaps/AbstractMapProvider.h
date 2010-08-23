@@ -1,7 +1,6 @@
 #ifndef ABSTRACT_PROVIDER
 #define ABSTRACT_PROVIDER
 
-#include "ofMain.h"
 #include "AbstractProjection.h"
 #include "Coordinate.h"
 #include "Location.h"

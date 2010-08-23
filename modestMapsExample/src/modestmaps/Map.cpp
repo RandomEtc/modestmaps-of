@@ -109,23 +109,25 @@ void Map::draw() {
 	// translate and scale, from the middle
 	ofPushMatrix();
 	ofTranslate(width/2.0, height/2.0);
-	ofScale(sc,sc,sc);
+	ofScale(sc,sc,1);
 	ofTranslate(tx, ty);
 	
 	if (visibleKeys.size() > 0) {
+		double prevZoom = baseZoom;
 		ofPushMatrix();
 		// correct the scale for this zoom level:
-		double correction = 1.0/pow(2, baseZoom);
-		ofScale(correction,correction,correction);
+		double correction = 1.0/pow(2.0, prevZoom);
+		ofScale(correction,correction,1);
 		set<Coordinate>::iterator iter;
 		for (iter = visibleKeys.begin(); iter != visibleKeys.end(); iter++) {
 			Coordinate coord = *iter;
-			if (coord.zoom != baseZoom) {
+			if (coord.zoom != prevZoom) {
 				ofPopMatrix();
 				ofPushMatrix();
 				// correct the scale for this zoom level:
 				correction = 1.0/pow(2.0,coord.zoom);
-				ofScale(correction, correction, correction);
+				ofScale(correction, correction, 1);
+				prevZoom = coord.zoom;
 			}
 
 			//ofEnableAlphaBlending();

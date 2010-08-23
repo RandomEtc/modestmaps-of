@@ -1,7 +1,6 @@
 #ifndef LINEAR_PROJECTION
 #define LINEAR_PROJECTION
 
-#include "ofMain.h"
 #include "AbstractProjection.h"
 #include "Transformation.h"
 

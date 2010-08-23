@@ -15,7 +15,7 @@
 #define TILE_SIZE 256.0
 
 // limit simultaneous calls to loadImage
-#define MAX_PENDING  1
+#define MAX_PENDING  4
 
 // limit tiles in memory
 // 256 would be 64 MB, you may want to lower this quite a bit for your app

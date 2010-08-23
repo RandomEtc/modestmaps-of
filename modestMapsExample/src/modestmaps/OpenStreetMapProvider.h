@@ -1,7 +1,6 @@
 #ifndef OPENSTREETMAPPROVIDER
 #define OPENSTREETMAPPROVIDER
 
-#include "ofMain.h"
 #include "AbstractMapProvider.h"
 #include "MercatorProjection.h"
 

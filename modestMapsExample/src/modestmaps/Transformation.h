@@ -1,8 +1,6 @@
 #ifndef TRANSFORMATION
 #define TRANSFORMATION
 
-#include "ofMain.h"
-
 class Point2d;
 
 class Transformation {

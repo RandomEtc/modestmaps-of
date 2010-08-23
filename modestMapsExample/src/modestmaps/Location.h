@@ -1,8 +1,6 @@
 #ifndef LOCATION
 #define LOCATION
 
-#include "ofMain.h"
-
 class Location {
 	
 public:
