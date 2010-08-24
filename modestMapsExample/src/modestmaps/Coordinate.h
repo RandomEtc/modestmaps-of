@@ -1,8 +1,6 @@
 #ifndef COORDINATE
 #define COORDINATE
 
-#include "ofMain.h"
-
 class Coordinate {
 	
 public:

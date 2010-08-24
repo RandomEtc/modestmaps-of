@@ -1,13 +1,5 @@
 #include "Map.h"
-
-template <class T> class ItemNotInSet {
-public:
-	set<T> *theSet;
-	ItemNotInSet(set<T> *_set): theSet(_set) {}
-    bool operator () ( const T &c ) {
-		return theSet->count(c) == 0;;
-	}
-};
+#include "QueueSorter.h"
 
 void Map::setup(AbstractMapProvider* _provider, double _width, double _height) {
 	provider = _provider;
@@ -151,13 +143,20 @@ void Map::draw() {
 	}    
 	
 	ofPopMatrix();
-	
-	///// xxxxxxxxxxxxxxxxx THIS IS WHERE YOU GOT TO AT 1:30 :)
-	
+		
 	// stop fetching things we can't see:
 	// (visibleKeys also has the parents and children, if needed, but that shouldn't matter)
 	//queue.retainAll(visibleKeys);
-	queue.erase(remove_if(queue.begin(), queue.end(), ItemNotInSet<Coordinate>(&visibleKeys)), queue.end());
+	vector<Coordinate>::iterator iter = queue.begin();
+	while (iter != queue.end()) {
+		Coordinate key = *iter;
+		if (visibleKeys.count(key) == 0){ 
+			iter = queue.erase(iter);
+		}
+		else {
+			++iter;
+		}
+	}
 	
 	// TODO sort what's left by distance from center:
 	//queueSorter.setCenter(new Coordinate( (minRow + maxRow) / 2.0f, (minCol + maxCol) / 2.0f, zoom));
@@ -417,6 +416,9 @@ void Map::tileDone(Coordinate coord, ofMemoryImage *img) {
 }
 
 void Map::processQueue() {
+	if (queue.size() > MAX_PENDING-pending.size()) {
+		sort(queue.begin(), queue.end(), QueueSorter(getCenterCoordinate()));		
+	}
 	while (pending.size() < MAX_PENDING && queue.size() > 0) {
 		Coordinate coord = *(queue.begin());
 		Coordinate key = Coordinate(coord);
@@ -425,3 +427,4 @@ void Map::processQueue() {
 		queue.erase(queue.begin());
 	}  
 }
+
