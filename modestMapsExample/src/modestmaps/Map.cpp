@@ -161,7 +161,9 @@ void Map::draw() {
 	// stop fetching things we can't see:
 	// (visibleKeys also has the parents and children, if needed, but that shouldn't matter)
 	//queue.retainAll(visibleKeys);
+	cout << queue.size() << " items in queue, " << visibleKeys.size() << " visible keys " << endl;
 	queue.erase(remove_if(queue.begin(), queue.end(), ItemNotInSet<Coordinate>(&visibleKeys)), queue.end());
+	cout << queue.size() << " items in queue, " << endl;
 	
 	// TODO sort what's left by distance from center:
 	//queueSorter.setCenter(new Coordinate( (minRow + maxRow) / 2.0f, (minCol + maxCol) / 2.0f, zoom));
@@ -193,7 +195,7 @@ void Map::draw() {
 
 void Map::keyPressed(int key) {
 	if (key == '+' || key == '=') {
-		if (getZoom() < 10) {
+		if (getZoom() < 19) {
 			zoomIn();
 		}
 	}
@@ -210,14 +212,30 @@ void Map::keyReleased(int key) {
 void Map::mouseDragged(int x, int y, int button) {
 	double dx = ((double)x - px) / sc;
 	double dy = ((double)y - py) / sc;
-	//cout << dx << "," << dy;
-	//    float angle = radians(-a);
-	//    float rx = cos(angle)*dx - sin(angle)*dy;
-	//    float ry = sin(angle)*dx + cos(angle)*dy;
-	//    tx += rx;
-	//    ty += ry;
-	tx += dx;
-	ty += dy;
+	if (button == GLUT_LEFT_BUTTON) {
+		//cout << dx << "," << dy;
+		//    float angle = radians(-a);
+		//    float rx = cos(angle)*dx - sin(angle)*dy;
+		//    float ry = sin(angle)*dx + cos(angle)*dy;
+		//    tx += rx;
+		//    ty += ry;
+		tx += dx;
+		ty += dy;
+	}
+	else if (button == GLUT_RIGHT_BUTTON) {
+		double mx = x - width/2;
+		double my = x - height/2;
+		tx -= mx/sc;
+		ty -= my/sc;
+		if (dy < 0) {
+			sc *= 1.0 + (fabs(dy*sc) / 100.0);
+		}
+		else {
+			sc /= 1.0 + ((dy*sc) / 100.0);
+		}
+		tx += mx/sc;
+		ty += my/sc;		
+	}
 	px = x;
 	py = y;
 }
@@ -380,7 +398,6 @@ void Map::grabTile(Coordinate coord) {
 	bool isQueued = find(queue.begin(), queue.end(), coord) != queue.end();
 	bool isAlreadyLoaded = images.count(coord) > 0;
 	if (!isPending && !isQueued && !isAlreadyLoaded) {
-		cout << coord << " queued" << endl;
 		queue.push_back(Coordinate(coord));
 	}
 }
@@ -406,11 +423,9 @@ void Map::tileDone(Coordinate coord, ofMemoryImage *img) {
 
 void Map::processQueue() {
 	while (pending.size() < MAX_PENDING && queue.size() > 0) {
-		cout << "queue size: " << queue.size() << endl;		
 		Coordinate coord = *(queue.begin());
 		Coordinate key = Coordinate(coord);
 		pending[key] = TileLoader();
-		cout << "starting load for " << key << endl;
 		pending[key].start(key, provider, this);
 		queue.erase(queue.begin());
 	}  

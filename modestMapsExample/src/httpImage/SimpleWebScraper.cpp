@@ -154,11 +154,10 @@ void SimpleWebScraper::handleStreamRequest(string url_) {
 	args.bytesToRead	= bytesToRead;
 }	
 
-
-
 void SimpleWebScraper::notifyTextReceived (string response) {
 	textReady.notify(this, response);
 }
+
 void SimpleWebScraper::notifyUnthreadedStreamReceived (StreamEventArgs args) {
 	unthreadedStreamReady.notify(this, args);
 }
