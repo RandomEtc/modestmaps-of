@@ -417,7 +417,7 @@ void Map::tileDone(Coordinate coord, ofMemoryImage *img) {
 
 void Map::processQueue() {
 	if (queue.size() > MAX_PENDING-pending.size()) {
-		sort(queue.begin(), queue.end(), QueueSorter(getCenterCoordinate()));		
+		sort(queue.begin(), queue.end(), QueueSorter(getCenterCoordinate().zoomTo(getZoom())));		
 	}
 	while (pending.size() < MAX_PENDING && queue.size() > 0) {
 		Coordinate coord = *(queue.begin());

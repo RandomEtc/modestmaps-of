@@ -27,7 +27,8 @@ void TileLoader::onThreadedStreamReceived(const void* pSender, StreamEventArgs &
 	ofMemoryImage* threadedMemImage = new ofMemoryImage();
 	threadedMemImage->setUseTexture(false); // we can't use a texture with this one	
 	threadedMemImage->loadFromData(args_.buff,args_.bytesToRead);
-	//delete args_.buff;
+	// cleanup:
+	delete args_.buff;
 	
 	theMap->tileDone(coord, threadedMemImage);
 }

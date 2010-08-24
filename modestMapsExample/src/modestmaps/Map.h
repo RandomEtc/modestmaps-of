@@ -23,7 +23,7 @@
 #define MAX_IMAGES_TO_KEEP 256
 
 // upping this can help appearances when zooming out, but also loads many more tiles
-#define GRID_PADDING 0
+#define GRID_PADDING 1
 
 
 class Map {
