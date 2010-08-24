@@ -112,6 +112,8 @@ void Map::draw() {
 	ofScale(sc,sc,1);
 	ofTranslate(tx, ty);
 	
+	int numDrawnImages = 0;
+	
 	if (visibleKeys.size() > 0) {
 		double prevZoom = baseZoom;
 		ofPushMatrix();
@@ -144,10 +146,12 @@ void Map::draw() {
 					recentImages.erase(result);
 				}
 				else {
+					// if it's not in recent images it must be brand new?
 					tile->setUseTexture(true);
 					tile->initTex();
 				}
 				tile->draw(coord.column*TILE_SIZE,coord.row*TILE_SIZE,TILE_SIZE,TILE_SIZE);
+				numDrawnImages++;
 				recentImages.push_back(tile);
 			}
 		}
@@ -163,7 +167,8 @@ void Map::draw() {
 	//queue.retainAll(visibleKeys);
 	cout << queue.size() << " items in queue, " << visibleKeys.size() << " visible keys " << endl;
 	queue.erase(remove_if(queue.begin(), queue.end(), ItemNotInSet<Coordinate>(&visibleKeys)), queue.end());
-	cout << queue.size() << " items in queue, " << endl;
+	cout << queue.size() << " items in queue now " << endl;
+	cout << pending.size() << " items pending " << endl;
 	
 	// TODO sort what's left by distance from center:
 	//queueSorter.setCenter(new Coordinate( (minRow + maxRow) / 2.0f, (minCol + maxCol) / 2.0f, zoom));
@@ -173,16 +178,20 @@ void Map::draw() {
 	processQueue();
 	
 	// clear some images away if we have too many...
-	if (recentImages.size() > MAX_IMAGES_TO_KEEP) {
-		recentImages.erase(recentImages.begin(), recentImages.end()-MAX_IMAGES_TO_KEEP);
+	int numToKeep = max(numDrawnImages,MAX_IMAGES_TO_KEEP);
+	if (recentImages.size() > numToKeep) {
+		// first clear the pointers from recentImages
+		recentImages.erase(recentImages.begin(), recentImages.end()-numToKeep);
 		//images.values().retainAll(recentImages);
 		// TODO: re-think the stl collections used so that a simpler retainAll equivalent is available
+		// now look in the images map and if the value is no longer in recent images then get rid of it
 		map<Coordinate,ofMemoryImage*>::iterator iter = images.begin();
 		map<Coordinate,ofMemoryImage*>::iterator endIter = images.end();
 		for (; iter != endIter;) {
 			ofMemoryImage* tile = iter->second;
 			vector<ofMemoryImage*>::iterator result = find(recentImages.begin(), recentImages.end(), tile);
-			if (result != recentImages.end()) {
+			if (result == recentImages.end()) {
+				delete tile;
 				images.erase(iter++);
 			}
 			else {

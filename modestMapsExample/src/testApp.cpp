@@ -4,12 +4,15 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	map.setup(new OpenStreetMapProvider(), (double)ofGetWidth(), (double)ofGetHeight());
+	map.setZoom(3);
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 	map.update();
 	//map.sc += 0.01 * sin(ofGetElapsedTimef());
+	//map.tx += 0.01 * cos(ofGetElapsedTimef());
+	//map.ty += 0.01 * sin(ofGetElapsedTimef());
 }
 
 //--------------------------------------------------------------
@@ -25,6 +28,10 @@ void testApp::keyPressed(int key){
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
 	map.keyReleased(key);
+	
+	if (key == 'f' || key == 'F') {
+		ofToggleFullscreen();
+	}
 }
 
 //--------------------------------------------------------------
@@ -51,5 +58,7 @@ void testApp::mouseReleased(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::windowResized(int w, int h){
 	// TODO: map.setSize(w,h)?
+	map.width = w;
+	map.height = h;
 }
 
