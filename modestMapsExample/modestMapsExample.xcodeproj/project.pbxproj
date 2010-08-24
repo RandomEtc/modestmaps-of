@@ -97,7 +97,6 @@
 		E20FF6AC121F4F0D00F42001 /* Transformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transformation.h; sourceTree = "<group>"; };
 		E20FF76512205E8E00F42001 /* OpenStreetMapProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenStreetMapProvider.h; sourceTree = "<group>"; };
 		E20FF76B122062F300F42001 /* TileLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileLoader.h; sourceTree = "<group>"; };
-		E20FF76C1220636E00F42001 /* ZoomComparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomComparator.h; sourceTree = "<group>"; };
 		E20FF76D1220637500F42001 /* QueueSorter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueSorter.h; sourceTree = "<group>"; };
 		E20FF8AA1220EBC500F42001 /* Transformation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Transformation.cpp; sourceTree = "<group>"; };
 		E20FF8AE1220EC2C00F42001 /* MercatorProjection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MercatorProjection.cpp; sourceTree = "<group>"; };
@@ -249,7 +248,6 @@
 			children = (
 				E20FF76B122062F300F42001 /* TileLoader.h */,
 				E20FF8FA1220F0D100F42001 /* TileLoader.cpp */,
-				E20FF76C1220636E00F42001 /* ZoomComparator.h */,
 				E20FF76D1220637500F42001 /* QueueSorter.h */,
 			);
 			name = util;

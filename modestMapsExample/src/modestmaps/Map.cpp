@@ -179,8 +179,8 @@ void Map::draw() {
 			ofMemoryImage* tile = iter->second;
 			vector<ofMemoryImage*>::iterator result = find(recentImages.begin(), recentImages.end(), tile);
 			if (result == recentImages.end()) {
-				delete tile;
 				images.erase(iter++);
+				delete tile;
 			}
 			else {
 				++iter;

@@ -18,9 +18,9 @@
 	};
 	E20FF69A121F4F0D00F42001 /* Coordinate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {859, 871}}";
+			sepNavIntBoundsRect = "{{0, 0}, {859, 884}}";
 			sepNavSelRange = "{778, 0}";
-			sepNavVisRange = "{600, 393}";
+			sepNavVisRange = "{58, 1030}";
 			sepNavWindowFrame = "{{15, 60}, {1197, 818}}";
 		};
 	};
@@ -89,8 +89,14 @@
 		};
 	};
 	E20FF76C1220636E00F42001 /* ZoomComparator.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = ZoomComparator.h;
+		path = /Users/tom/Documents/Code/OpenFrameworks/openFrameworks/apps/modestMaps/modestMapsExample/src/modestmaps/ZoomComparator.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {670, 468}}";
+			sepNavIntBoundsRect = "{{0, 0}, {670, 438}}";
 			sepNavSelRange = "{193, 0}";
 			sepNavVisRange = "{0, 435}";
 		};
@@ -159,9 +165,9 @@
 	};
 	E20FF9691220F45600F42001 /* Map.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1138, 5720}}";
-			sepNavSelRange = "{11506, 11}";
-			sepNavVisRange = "{10278, 1518}";
+			sepNavIntBoundsRect = "{{0, 0}, {789, 5681}}";
+			sepNavSelRange = "{4630, 0}";
+			sepNavVisRange = "{4401, 324}";
 			sepNavWindowFrame = "{{242, 60}, {1197, 818}}";
 		};
 	};
@@ -188,6 +194,11 @@
 		name = stl_tree.h;
 		path = "/usr/include/c++/4.2.1/bits/stl_tree.h";
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {633, 20293}}";
+			sepNavSelRange = "{41463, 0}";
+			sepNavVisRange = "{41293, 406}";
+		};
 	};
 	E20FFAA81221099D00F42001 /* stl_map.h */ = {
 		isa = PBXFileReference;
@@ -338,7 +349,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 432";
 		rLen = 0;
-		rLoc = 11797;
+		rLoc = 11826;
 		rType = 0;
 		vrLen = 1024;
 		vrLoc = 10773;
@@ -386,7 +397,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 421";
 		rLen = 0;
-		rLoc = 11521;
+		rLoc = 11550;
 		rType = 0;
 		vrLen = 902;
 		vrLoc = 10895;
@@ -396,7 +407,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 421";
 		rLen = 0;
-		rLoc = 11504;
+		rLoc = 11533;
 		rType = 0;
 		vrLen = 1024;
 		vrLoc = 10773;
@@ -406,7 +417,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 421";
 		rLen = 11;
-		rLoc = 11506;
+		rLoc = 11535;
 		rType = 0;
 		vrLen = 1024;
 		vrLoc = 10773;
@@ -453,7 +464,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 421";
 		rLen = 11;
-		rLoc = 11506;
+		rLoc = 11535;
 		rType = 0;
 		vrLen = 1068;
 		vrLoc = 10729;
@@ -463,7 +474,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 421";
 		rLen = 0;
-		rLoc = 11473;
+		rLoc = 11502;
 		rType = 0;
 		vrLen = 1068;
 		vrLoc = 10729;
@@ -477,7 +488,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 421";
 		rLen = 0;
-		rLoc = 11473;
+		rLoc = 11502;
 		rType = 0;
 		vrLen = 1068;
 		vrLoc = 10729;
@@ -487,7 +498,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 421";
 		rLen = 0;
-		rLoc = 11473;
+		rLoc = 11502;
 		rType = 0;
 		vrLen = 1068;
 		vrLoc = 10729;
@@ -514,7 +525,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 421";
 		rLen = 11;
-		rLoc = 11506;
+		rLoc = 11535;
 		rType = 0;
 		vrLen = 1457;
 		vrLoc = 10340;
@@ -524,7 +535,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 421";
 		rLen = 0;
-		rLoc = 11473;
+		rLoc = 11502;
 		rType = 0;
 		vrLen = 1068;
 		vrLoc = 10729;
@@ -544,7 +555,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 421";
 		rLen = 11;
-		rLoc = 11506;
+		rLoc = 11535;
 		rType = 0;
 		vrLen = 1457;
 		vrLoc = 10340;
@@ -554,7 +565,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 419";
 		rLen = 0;
-		rLoc = 11473;
+		rLoc = 11502;
 		rType = 0;
 		vrLen = 1086;
 		vrLoc = 10711;
@@ -574,7 +585,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 419";
 		rLen = 11;
-		rLoc = 11506;
+		rLoc = 11535;
 		rType = 0;
 		vrLen = 1518;
 		vrLoc = 10278;
@@ -804,7 +815,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 422";
 		rLen = 0;
-		rLoc = 11272;
+		rLoc = 11301;
 		rType = 0;
 		vrLen = 589;
 		vrLoc = 11169;
@@ -912,7 +923,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 422";
 		rLen = 0;
-		rLoc = 11272;
+		rLoc = 11301;
 		rType = 0;
 		vrLen = 513;
 		vrLoc = 11245;
@@ -982,7 +993,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 402";
 		rLen = 0;
-		rLoc = 10928;
+		rLoc = 10957;
 		rType = 0;
 		vrLen = 977;
 		vrLoc = 10781;
@@ -1032,7 +1043,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 399";
 		rLen = 0;
-		rLoc = 10902;
+		rLoc = 10931;
 		rType = 0;
 		vrLen = 723;
 		vrLoc = 10821;
@@ -1070,7 +1081,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 402";
 		rLen = 0;
-		rLoc = 10928;
+		rLoc = 10957;
 		rType = 0;
 		vrLen = 977;
 		vrLoc = 10781;
@@ -1080,7 +1091,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 160";
 		rLen = 0;
-		rLoc = 4669;
+		rLoc = 4693;
 		rType = 0;
 		vrLen = 1396;
 		vrLoc = 4438;
@@ -1137,7 +1148,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 420";
 		rLen = 0;
-		rLoc = 11608;
+		rLoc = 11637;
 		rType = 0;
 		vrLen = 1054;
 		vrLoc = 10665;
@@ -1147,7 +1158,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 429";
 		rLen = 0;
-		rLoc = 11796;
+		rLoc = 11825;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 10821;
@@ -1157,7 +1168,7 @@
 		fRef = E20FF9691220F45600F42001 /* Map.cpp */;
 		name = "Map.cpp: 420";
 		rLen = 0;
-		rLoc = 11608;
+		rLoc = 11637;
 		rType = 0;
 		vrLen = 1008;
 		vrLoc = 10748;
@@ -1755,9 +1766,9 @@
 	};
 	E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {670, 871}}";
-			sepNavSelRange = "{174, 0}";
-			sepNavVisRange = "{145, 883}";
+			sepNavIntBoundsRect = "{{0, 0}, {633, 897}}";
+			sepNavSelRange = "{633, 0}";
+			sepNavVisRange = "{451, 322}";
 			sepNavWindowFrame = "{{15, 60}, {1197, 818}}";
 		};
 	};
