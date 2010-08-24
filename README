@@ -1,4 +1,15 @@
-Work in progress... not working yet :)
+Tiled map library for OpenFrameworks, for displaying maps from OpenStreetMap, CloudMade, Bing, etc.
 
-Also, learning C++ again (it's been a while) so please be gentle with feedback.
+Work in progress! Please test :)
+
+Missing features:
+ * mousewheel support (must I patch glut? really?)
+ * examples with overlays
+ * packaging into a library
+ * error handling
+ * more tile providers
+ * better display of copyright etc.
+ * intelligent use of HTTP
+
+Feedback, critique, patches welcome!
 
