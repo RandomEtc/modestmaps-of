@@ -45,15 +45,6 @@ void Map::draw() {
 	maxCol += GRID_PADDING;
 	maxRow += GRID_PADDING;
 	
-	int rows = pow(2, baseZoom);
-	int cols = pow(2, baseZoom);
-	
-	// we don't wrap around the world yet, so:
-	minCol = min(max(minCol, 0), cols);
-	maxCol = min(max(maxCol, 0), cols);
-	minRow = min(max(minRow, 0), rows);
-	maxRow = min(max(maxRow, 0), rows);
-	
 	visibleKeys.clear();
 	
 	// grab coords for visible tiles
@@ -61,7 +52,8 @@ void Map::draw() {
 		for (int row = minRow; row <= maxRow; row++) {
 			
 			// source coordinate wraps around the world:
-			Coordinate coord = provider->sourceCoordinate(Coordinate(row,col,baseZoom));
+			//Coordinate coord = provider->sourceCoordinate(Coordinate(row,col,baseZoom));
+			Coordinate coord = Coordinate(row,col,baseZoom);
 			
 			// keep this for later:
 			visibleKeys.insert(coord);
@@ -165,10 +157,7 @@ void Map::draw() {
 	// stop fetching things we can't see:
 	// (visibleKeys also has the parents and children, if needed, but that shouldn't matter)
 	//queue.retainAll(visibleKeys);
-	cout << queue.size() << " items in queue, " << visibleKeys.size() << " visible keys " << endl;
 	queue.erase(remove_if(queue.begin(), queue.end(), ItemNotInSet<Coordinate>(&visibleKeys)), queue.end());
-	cout << queue.size() << " items in queue now " << endl;
-	cout << pending.size() << " items pending " << endl;
 	
 	// TODO sort what's left by distance from center:
 	//queueSorter.setCenter(new Coordinate( (minRow + maxRow) / 2.0f, (minCol + maxCol) / 2.0f, zoom));
@@ -415,13 +404,10 @@ void Map::grabTile(Coordinate coord) {
 // TODO: there could be issues when this is called from within a thread
 // probably needs synchronizing on images / pending / queue
 void Map::tileDone(Coordinate coord, ofMemoryImage *img) {
-	cout << coord << " loaded" << endl;
 	// check if we're still waiting for this (new provider clears pending)
 	// also check if we got something
-	if (pending.count(coord) > 0) { // TODO: check the C++ equivalent of img != NULL) {
-		cout << "caching " << coord << endl;
+	if (pending.count(coord) > 0 && img != NULL) {
 		images[Coordinate(coord)] = img;
-		cout << "cache size: " << images.size() << endl;
 		pending.erase(coord);  
 	}
 	else {

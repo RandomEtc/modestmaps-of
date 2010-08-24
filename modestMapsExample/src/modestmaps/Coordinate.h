@@ -38,31 +38,31 @@ public:
 		return Coordinate(floor(row), floor(column), zoom);
 	}
 	
-	Coordinate zoomTo(float destination) {
+	Coordinate zoomTo(double destination) {
 		return Coordinate(row * pow(2, destination - zoom),
 						  column * pow(2, destination - zoom),
 						  destination);
 	}
 	
-	Coordinate zoomBy(float distance) {
+	Coordinate zoomBy(double distance) {
 		return Coordinate(row * pow(2, distance),
 						  column * pow(2, distance),
 						  zoom + distance);
 	}
 	
-	Coordinate up(float distance=1) {
+	Coordinate up(double distance=1) {
 		return Coordinate(row - distance, column, zoom);
 	}
 	
-	Coordinate right(float distance=1) {
+	Coordinate right(double distance=1) {
 		return Coordinate(row, column + distance, zoom);
 	}
 	
-	Coordinate down(float distance=1) {
+	Coordinate down(double distance=1) {
 		return Coordinate(row + distance, column, zoom);
 	}
 	
-	Coordinate left(float distance=1) {
+	Coordinate left(double distance=1) {
 		return Coordinate(row, column - distance, zoom);
 	}
 	

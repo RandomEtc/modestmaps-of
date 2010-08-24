@@ -3,6 +3,8 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+	ofSetVerticalSync(true);
+	//ofSetFrameRate(100);
 	map.setup(new OpenStreetMapProvider(), (double)ofGetWidth(), (double)ofGetHeight());
 	map.setZoom(3);
 }

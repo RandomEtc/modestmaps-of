@@ -13,8 +13,13 @@ void TileLoader::start(Coordinate _coord, AbstractMapProvider *_provider, Map *_
 	
 	vector<string> urls = provider->getTileUrls(coord);
 
-	// TODO: more than one URL?
-	sws.getStreamThreaded(urls[0]);
+	if (urls.size() > 0) {
+		// TODO: more than one URL?
+		sws.getStreamThreaded(urls[0]);
+	}
+	else {
+		_map->tileDone(coord, NULL);
+	}
 }
 
 void TileLoader::onThreadedStreamReceived(const void* pSender, StreamEventArgs & args_) {
