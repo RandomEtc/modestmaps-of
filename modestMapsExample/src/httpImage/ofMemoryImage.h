@@ -11,19 +11,28 @@
 
 #include "ofImage.h"
 
+
+
+
 class   ofMemoryImage : public ofImage { 
 	
-public:	
-	void loadFromData(const unsigned char * datasource, int len); 
-	
-	void initTex() {
-		tex.allocate(width, height, myPixels.glDataType);
-		tex.loadData(myPixels.pixels, width, height, myPixels.glDataType);	
-	}
-	
-private :
-	bool loadFromDataIntoPixels(const unsigned char * datasource, int len, ofPixels &pix); 
-
+public:
+    
+    // this is happening in a different so don't do texture stuff here
+	void loadFromData(const unsigned char * datasource, int len){
+        setUseTexture(false);
+        ofBuffer buffer;
+        buffer.set((const char *)datasource, len);
+        loadImage(buffer);
+    }
+    
+    void initTex(){
+        setUseTexture(true);
+        update();
+    }
+    
+    
+    
 };
 
 #endif

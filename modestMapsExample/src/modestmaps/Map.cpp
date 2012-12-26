@@ -209,7 +209,7 @@ void Map::keyReleased(int key) {
 void Map::mouseDragged(int x, int y, int button) {
 	double dx = ((double)x - px) / sc;
 	double dy = ((double)y - py) / sc;
-	if (button == GLUT_LEFT_BUTTON) {
+	if (button == 0) {
 		//cout << dx << "," << dy;
 		//    float angle = radians(-a);
 		//    float rx = cos(angle)*dx - sin(angle)*dy;
@@ -219,7 +219,7 @@ void Map::mouseDragged(int x, int y, int button) {
 		tx += dx;
 		ty += dy;
 	}
-	else if (button == GLUT_RIGHT_BUTTON) {
+	else if (button == 2) {
 		double mx = x - width/2;
 		double my = x - height/2;
 		tx -= mx/sc;
