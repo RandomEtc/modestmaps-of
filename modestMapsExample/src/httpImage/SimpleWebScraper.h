@@ -41,8 +41,7 @@ using Poco::Delegate;
 
 
 #include "ofMain.h"
-#define OF_ADDON_USING_OFXTHREAD
-#include "ofAddons.h"
+
 
 #define		TEXT_REQUEST 0
 #define		STREAM_REQUEST 1
@@ -57,7 +56,7 @@ class StreamEventArgs {
 
 };
 
-class SimpleWebScraper : public ofxThread  {
+class SimpleWebScraper : public ofThread  {
 
     public:
 
