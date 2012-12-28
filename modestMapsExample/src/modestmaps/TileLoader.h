@@ -2,7 +2,7 @@
 #define TILE_LOADER
 
 #include "ofMain.h"
-#include "ofxThread.h"
+#include "ofThread.h"
 #include "Coordinate.h"
 #include "SimpleWebScraper.h"
 
